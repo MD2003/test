@@ -27,7 +27,7 @@ const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const sql = require("sqlite");
 const dateFormat = require('dateformat'); 
 const pretty = require('pretty-ms') 
-const prefix = '_';
+const prefix = '%';
 var table = require('table').table
 var ti={}  
 ,spee={}
@@ -70,11 +70,11 @@ ${prefix}invites/ shows you howmany invites you have
 ${prefix}invinfo <invitelink here> / invite information
  مثال : invinfo m82n8P
 ${prefix}invite-codes/يعرض لك روابط الانفايتات حكك في السيرفر 
-${prefix}cal/اله حاسبة
-${prefix}trans <language> <any thing>/يترجم لك الي تبيه من اي لغة
-${prefix}short/يختصر لك رابط كبير الى رابط صغير
+${prefix}cal/calculater
+${prefix}trans <language> <any thing>/translater
+${prefix}short/sortcut urls
 ${prefix}tag/يكتب لك الكلمة بشكل جميل وكبير
-${prefix}google/للبحث في قوقل عن طريق الدسكورد
+${prefix}google/search in google using discord
 ${prefix}perms/يعرض لك برمشناتك بالسيرفر
 ${prefix}z5rf/يزخرف لك كلمة او جملة
 ${prefix}rooms/يعرض لك كل الرومات الي بالسيرفر مع عددها
@@ -153,7 +153,7 @@ ${prefix}فوائد ونصائح  / هل تعلم
 ${prefix}يعطيك عقابات قاسية / عقاب 
 =.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.
 welcome يتم الترحيب فى روم باسم
-G.setwelcomer <text channel name> لاختيار روم للترحيب
+G.setwelcomer <text channel name> to chose a welcome room
 ${prefix}voiceonline / لتفعيل روم الفويس اونلاين
 **
    
@@ -741,7 +741,7 @@ client.users.get("516473846983950336").send(
 
 let embed = new Discord.RichEmbed()
      .setAuthor(message.author.username, message.author.avatarURL)
-     .setDescription(':mailbox_with_mail: تم ارسال الرسالة الى صاحب البوت بنجاح')
+     .setDescription(':mailbox_with_mail: the message was sent to the server owner')
      .setThumbnail(message.author.avatarURL)
      .setFooter("By : 3bker")
                                                 
@@ -757,7 +757,7 @@ if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'move')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
  if (message.mentions.users.size === 0) {
- return message.channel.send("``لاستخدام الأمر اكتب هذه الأمر : " +prefix+ "اسحب [USER]``")
+ return message.channel.send("``لاستخدام الأمر اكتب هذه الأمر : " +prefix+ "move [USER]``")
 }
 if (message.member.voiceChannel != null) {
  if (message.mentions.members.first().voiceChannel != null) {
@@ -774,10 +774,10 @@ var embed = new Discord.RichEmbed()
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 message.guild.members.get(usermentioned).send(embed)
 } else {
-message.channel.send("``لا تستطيع سحب "+ message.mentions.members.first() +" `يجب ان يكون هذه العضو في روم صوتي`")
+message.channel.send("``لا تستطيع سحب "+ message.mentions.members.first() +" `to move this member it should be in a voice channel`")
 }
 } else {
- message.channel.send("**``يجب ان تكون في روم صوتي لكي تقوم بسحب العضو أليك``**")
+ message.channel.send("**``You need to be in a voice channel to move members``**")
 }
 } else {
 message.react("?")
