@@ -247,7 +247,6 @@ client.on('message', msg => {
   }
 });
 
-client.login('token');
 
     fs.writeFile("./creditsCode.json", JSON.stringify(userData.credits + amount), (err) => {
     if (err) console.error(err);
