@@ -237,6 +237,18 @@ client.on('message', async message => {
     credits: m
     };
 
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('message', msg => {
+  if (msg.content === prefix + 'help') {
+    msg.reply('Pong!');
+  }
+});
+
+client.login('token');
+
     fs.writeFile("./creditsCode.json", JSON.stringify(userData.credits + amount), (err) => {
     if (err) console.error(err);
     });
