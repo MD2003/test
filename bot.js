@@ -243,7 +243,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === prefix + 'help') {
-    msg.reply('Pong!');
+    msg.reply('تم ارسال الاوامر لك بالخاص');
   }
 });
 
